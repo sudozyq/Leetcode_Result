@@ -1,7 +1,10 @@
+#include <strcmp>
+
 class Solution {
 public:
     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
-        vector<int> nums3;
+        /// 暴力解法
+		vector<int> nums3;
         int length;
         
         /// 如果两数组为空返回错误
@@ -9,9 +12,9 @@ public:
             return -1;
         /// 如果其中一个数组为空返回另一个的中间值
         else if(nums1.size() == 0)
-            return (nums2[(nums2.size() - 1) / 2] + nums2[nums2.size() / 2]) / 2;
+            return (double)(nums2[(nums2.size() - 1) / 2] + nums2[nums2.size() / 2]) / 2;
         else if(nums2.size() == 0)
-            return (nums1[(nums1.size() - 1) / 2] + nums1[nums1.size() / 2]) / 2;
+            return (double)(nums1[(nums1.size() - 1) / 2] + nums1[nums1.size() / 2]) / 2;
         
         
         for (vector<int>::iterator i = nums1.begin(), j = nums2.begin(); ;)
@@ -21,7 +24,7 @@ public:
                 while(j != nums2.end())
                 {
                     nums3.push_back(*j);
-                    j++;
+                    ++j;
                 }
                 break;
             }
@@ -47,7 +50,7 @@ public:
             }
         }
         
-        return (nums3[(nums3.size() - 1) / 2] + nums3[nums3.size() / 2]) / 2;
+        return (double)(nums3[(nums3.size() - 1) / 2] + nums3[nums3.size() / 2]) / 2;
         
     }
 };
